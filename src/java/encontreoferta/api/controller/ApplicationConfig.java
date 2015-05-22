@@ -19,6 +19,7 @@ public class ApplicationConfig extends Application {
         resources.add(encontreoferta.api.controller.PromocaoFacadeREST.class);
         resources.add(encontreoferta.api.controller.UsuarioFacadeREST.class);
         resources.add(encontreoferta.api.controller.VendedorFacadeREST.class);
+        resources.add(encontreoferta.api.controller.VoucherFacadeREST.class);
     }
     
 }
