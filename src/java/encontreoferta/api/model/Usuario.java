@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package encontreoferta.api.model;
 
 import java.io.Serializable;
@@ -20,10 +14,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author leonardo
- */
 @Entity
 @Table(name = "usuario")
 @XmlRootElement
@@ -43,19 +33,16 @@ public class Usuario implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "endereco")
     private String endereco;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "telefone")
-    private int telefone;
+    private String telefone;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
@@ -63,7 +50,6 @@ public class Usuario implements Serializable {
     @Column(name = "email")
     private String email;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "senha")
     private String senha;
@@ -75,7 +61,7 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Usuario(Integer id, String nome, String endereco, int telefone, String email, String senha) {
+    public Usuario(Integer id, String nome, String endereco, String telefone, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
@@ -108,11 +94,11 @@ public class Usuario implements Serializable {
         this.endereco = endereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
