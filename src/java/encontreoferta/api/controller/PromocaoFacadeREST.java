@@ -13,11 +13,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import encontreoferta.api.facade.AbstractFacade;
+import encontreoferta.api.facade.PromocaoFacade;
 
 @Stateless
 @Path("promocao")
-public class PromocaoFacadeREST extends AbstractFacade<Promocao> {
+public class PromocaoFacadeREST extends PromocaoFacade{
     @PersistenceContext(unitName = "api.encontreofertaPU")
     private EntityManager em;
 
