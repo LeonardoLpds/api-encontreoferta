@@ -51,7 +51,14 @@ public class PromocaoFacadeREST extends PromocaoFacade{
     public Promocao find(@PathParam("id") String id) {
         return super.find(id);
     }
-
+    
+    @GET
+    @Path("categoria/{id}")
+    @Produces("application/json")
+    public List<Promocao> findByCategoria(@PathParam("id") Integer id) {
+        return super.findByCategoria(id);
+    }
+    
     @GET
     @Override
     @Produces("application/json")
