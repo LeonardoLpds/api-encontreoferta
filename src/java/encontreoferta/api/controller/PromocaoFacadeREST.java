@@ -62,6 +62,14 @@ public class PromocaoFacadeREST extends PromocaoFacade{
     
     @GET
     @Override
+    @Path("nivel/{id}")
+    @Produces("application/json")
+    public List<Promocao> findByNivel(@PathParam("id") Integer id) {
+        return super.findByCategoria(id);
+    }
+    
+    @GET
+    @Override
     @Produces("application/json")
     public List<Promocao> findAll() {
         return super.findAll();
