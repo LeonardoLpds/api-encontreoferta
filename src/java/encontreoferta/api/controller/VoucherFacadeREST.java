@@ -1,6 +1,6 @@
 package encontreoferta.api.controller;
 
-import encontreoferta.api.facade.AbstractFacade;
+import encontreoferta.api.facade.VoucherFacade;
 import encontreoferta.api.model.Voucher;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,7 +17,7 @@ import javax.ws.rs.Produces;
 
 @Stateless
 @Path("voucher")
-public class VoucherFacadeREST extends AbstractFacade<Voucher>{
+public class VoucherFacadeREST extends VoucherFacade{
     @PersistenceContext(unitName = "api.encontreofertaPU")
     private EntityManager em;
 
@@ -31,7 +31,16 @@ public class VoucherFacadeREST extends AbstractFacade<Voucher>{
     public void create(Voucher entity) {
         super.create(entity);
     }
-
+    
+    @POST
+    @Override
+    @Path("gerar")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Voucher gerar(String json) {
+        return super.gerar(json);
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes("application/json")
