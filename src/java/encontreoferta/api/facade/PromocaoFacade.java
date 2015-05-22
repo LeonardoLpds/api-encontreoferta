@@ -12,14 +12,21 @@ public abstract class PromocaoFacade extends AbstractFacade<Promocao>{
     }
     
     public List<Promocao> findByCategoria(Integer idCategoria){
-        Categoria categoria = (Categoria) getEntityManager()
+        List<Promocao> promocoes = null;
+        try{
+            Categoria categoria = (Categoria) getEntityManager()
                 .createNamedQuery("Categoria.findById")
                 .setParameter("id", idCategoria)
                 .getSingleResult();
         
-        return getEntityManager().createNamedQuery("Promocao.findByCategoria")
+            promocoes = getEntityManager().createNamedQuery("Promocao.findByCategoria")
                 .setParameter("idCategoria", categoria)
                 .getResultList();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return promocoes;
     }
     
     @Override
