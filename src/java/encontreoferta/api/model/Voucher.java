@@ -5,6 +5,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,6 +33,12 @@ public class Voucher implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "codigo")
     private String codigo;
+    @JoinColumn(name = "id_promocao", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Promocao promocao;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Usuario usuario;
 
     public Voucher() {
     }
