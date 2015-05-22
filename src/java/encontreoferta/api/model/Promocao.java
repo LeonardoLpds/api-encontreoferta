@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package encontreoferta.api.model;
 
 import java.io.Serializable;
@@ -25,10 +19,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author leonardo
- */
 @Entity
 @Table(name = "promocao")
 @XmlRootElement
@@ -40,7 +30,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Promocao.findByDataFinal", query = "SELECT p FROM Promocao p WHERE p.dataFinal = :dataFinal"),
     @NamedQuery(name = "Promocao.findByImagem", query = "SELECT p FROM Promocao p WHERE p.imagem = :imagem"),
     @NamedQuery(name = "Promocao.findByQuantidade", query = "SELECT p FROM Promocao p WHERE p.quantidade = :quantidade"),
-    @NamedQuery(name = "Promocao.findByOferta", query = "SELECT p FROM Promocao p WHERE p.oferta = :oferta")})
+    @NamedQuery(name = "Promocao.findByOferta", query = "SELECT p FROM Promocao p WHERE p.oferta = :oferta"),
+    @NamedQuery(name = "Promocao.findByCategoria", query = "SELECT p FROM Promocao p WHERE p.idCategoria = :idCategoria"),
+    @NamedQuery(name = "Promocao.findByNivel", query = "SELECT p FROM Promocao p WHERE p.idNivel = :idNivel"),
+    @NamedQuery(name = "Promocao.findByVendedor", query = "SELECT p FROM Promocao p WHERE p.idVendedor = :idVendedor")
+})
 public class Promocao implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
