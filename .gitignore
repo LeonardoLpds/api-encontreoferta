@@ -1,0 +1,17 @@
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+*.class
+*.so
+*.log
+*.out
+*~
+*.swp
+*.DS_Store
+*.lock
+
