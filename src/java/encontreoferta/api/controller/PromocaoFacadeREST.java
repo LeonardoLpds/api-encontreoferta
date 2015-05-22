@@ -53,6 +53,7 @@ public class PromocaoFacadeREST extends PromocaoFacade{
     }
     
     @GET
+    @Override
     @Path("categoria/{id}")
     @Produces("application/json")
     public List<Promocao> findByCategoria(@PathParam("id") Integer id) {
