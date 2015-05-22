@@ -48,7 +48,7 @@ public class PromocaoFacadeREST extends PromocaoFacade{
     @GET
     @Path("{id}")
     @Produces("application/json")
-    public Promocao find(@PathParam("id") String id) {
+    public Promocao find(@PathParam("id") Integer id) {
         return super.find(id);
     }
     
