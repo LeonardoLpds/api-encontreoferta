@@ -58,7 +58,7 @@ public class CategoriaFacadeREST extends AbstractFacade<Categoria> {
     @GET
     @Path("{id}")
     @Produces("application/json")
-    public Categoria find(@PathParam("id") String id) {
+    public Categoria find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
