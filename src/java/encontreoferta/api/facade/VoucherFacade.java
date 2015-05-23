@@ -18,7 +18,8 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
     public Voucher gerar(String json) {
         Visitante visitante = new Gson().fromJson(json, Visitante.class);
         
-        Usuario usuario = createNewUser(visitante.getEmail());
+        Usuario usuario = convertToUser(visitante);
+        
         Promocao promocao = getPromocaoById(visitante.getIdPromocao());
         String codigo = String.valueOf(new Date().getTime());
         
@@ -29,6 +30,13 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         super.create(voucher);
         
         return voucher;
+    }
+    
+    private Usuario convertToUser(Visitante visitante){
+        if(visitante.getIdUsuario() != null){
+            return getUserById(visitante.getIdUsuario());
+        }
+        return createNewUser(visitante.getEmail());
     }
     
     private Usuario createNewUser(String email){
@@ -42,6 +50,13 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         return (Usuario) getEntityManager()
                 .createNamedQuery("Usuario.findByEmail")
                 .setParameter("email", email)
+                .getSingleResult();
+    }
+    
+    private Usuario getUserById(Integer id){
+        return (Usuario) getEntityManager()
+                .createNamedQuery("Usuario.findById")
+                .setParameter("id", id)
                 .getSingleResult();
     }
     
