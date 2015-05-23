@@ -1,6 +1,5 @@
 package encontreoferta.api.lib;
 
-import java.io.File;
 import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
 
@@ -13,9 +12,7 @@ public final class HibernateUtil{
         try
         {
             SessionFactory s = new AnnotationConfiguration()
-                    .configure(new File("hibernate.cgf.xml"))
-                    .buildSessionFactory();
-            
+                    .configure().buildSessionFactory();
             return s;
         }
         catch (HibernateException ex) {
