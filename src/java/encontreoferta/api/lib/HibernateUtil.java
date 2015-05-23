@@ -3,7 +3,7 @@ package encontreoferta.api.lib;
 import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-public final class HibernateUtil{
+public abstract class HibernateUtil{
     private static final SessionFactory sessionFactory = buildSessionFactory();
     private static final Session session = sessionFactory.openSession();
     
