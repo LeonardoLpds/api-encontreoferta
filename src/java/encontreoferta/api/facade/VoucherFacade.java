@@ -4,6 +4,7 @@ import encontreoferta.api.model.Voucher;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import com.google.gson.Gson;
+import encontreoferta.api.lib.HibernateUtil;
 import encontreoferta.api.model.Promocao;
 import encontreoferta.api.model.Usuario;
 import encontreoferta.api.model.Visitante;
@@ -15,24 +16,11 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
     }
     
     public Voucher gerar(String json) {
-        String codigo = String.valueOf(new Date().getTime());
-        
         Visitante visitante = new Gson().fromJson(json, Visitante.class);
         
-        Usuario usuario = new Usuario();
-        usuario.setEmail(visitante.getEmail());
-        getEntityManager().createNamedQuery("Usuario.preRegister")
-                .setParameter("email", usuario.getEmail());
-        
-        usuario = (Usuario) getEntityManager()
-                .createNamedQuery("Usuario.findByEmail")
-                .setParameter("email", usuario.getEmail())
-                .getSingleResult();
-        
-        Promocao promocao = (Promocao) getEntityManager()
-                .createNamedQuery("Promocao.findById")
-                .setParameter("id", visitante.getIdPromocao())
-                .getSingleResult();
+        Usuario usuario = createNewUser(visitante.getEmail());
+        Promocao promocao = getPromocaoById(visitante.getIdPromocao());
+        String codigo = String.valueOf(new Date().getTime());
         
         Voucher voucher = new Voucher();
         voucher.setCodigo(codigo);
@@ -41,6 +29,27 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         super.create(voucher);
         
         return voucher;
+    }
+    
+    private Usuario createNewUser(String email){
+        Usuario usuario = new Usuario();
+        usuario.setEmail(email);
+        HibernateUtil.persistObject(usuario);
+        return getUserByEmail(email);
+    }
+    
+    private Usuario getUserByEmail(String email){
+        return (Usuario) getEntityManager()
+                .createNamedQuery("Usuario.findByEmail")
+                .setParameter("email", email)
+                .getSingleResult();
+    }
+    
+    private Promocao getPromocaoById(Integer id){
+        return (Promocao) getEntityManager()
+                .createNamedQuery("Promocao.findById")
+                .setParameter("id", id)
+                .getSingleResult();
     }
     
     @Override
