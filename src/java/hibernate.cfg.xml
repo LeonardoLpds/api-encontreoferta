@@ -7,5 +7,11 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/encontre_oferta</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    <mapping class="encontreoferta.api.model.Usuario"/>
+    <mapping class="encontreoferta.api.model.Categoria"/>
+    <mapping class="encontreoferta.api.model.Nivel"/>
+    <mapping class="encontreoferta.api.model.Promocao"/>
+    <mapping class="encontreoferta.api.model.Vendedor"/>
+    <mapping class="encontreoferta.api.model.Voucher"/>
   </session-factory>
 </hibernate-configuration>
