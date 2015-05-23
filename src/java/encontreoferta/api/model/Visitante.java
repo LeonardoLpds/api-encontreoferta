@@ -1,28 +1,28 @@
 package encontreoferta.api.model;
 
 public class Visitante {
-    private int idUsuario;
-    private int idPromocao;
+    private Integer idUsuario;
+    private Integer idPromocao;
     private String email;
 
     public Visitante() {
     }
     
-    public Visitante(int idPromocao, String email) {
+    public Visitante(Integer idPromocao, String email) {
         this.idPromocao = idPromocao;
         this.email = email;
     }
 
-    public Visitante(int idUsuario, int idPromocao) {
+    public Visitante(Integer idUsuario, Integer idPromocao) {
         this.idUsuario = idUsuario;
         this.idPromocao = idPromocao;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -30,7 +30,7 @@ public class Visitante {
         return idPromocao;
     }
 
-    public void setIdPromocao(int idPromocao) {
+    public void setIdPromocao(Integer idPromocao) {
         this.idPromocao = idPromocao;
     }
 
