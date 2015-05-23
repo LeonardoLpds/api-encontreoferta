@@ -12,9 +12,11 @@ public final class HibernateUtil{
     {
         try
         {
-            return new AnnotationConfiguration()
+            SessionFactory s = new AnnotationConfiguration()
                     .configure(new File("hibernate.cgf.xml"))
                     .buildSessionFactory();
+            
+            return s;
         }
         catch (HibernateException ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
