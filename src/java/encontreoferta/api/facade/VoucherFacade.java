@@ -21,16 +21,24 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         
         Usuario usuario = new Usuario();
         usuario.setEmail(visitante.getEmail());
-        //Persiste o objeto//
+        getEntityManager().createNamedQuery("Usuario.preRegister")
+                .setParameter("email", usuario.getEmail());
         
-        //Trocar para find
-        Promocao promocao = new Promocao(visitante.getIdPromocao());
+        usuario = (Usuario) getEntityManager()
+                .createNamedQuery("Usuario.findByEmail")
+                .setParameter("email", usuario.getEmail())
+                .getSingleResult();
+        
+        Promocao promocao = (Promocao) getEntityManager()
+                .createNamedQuery("Promocao.findById")
+                .setParameter("id", visitante.getIdPromocao())
+                .getSingleResult();
         
         Voucher voucher = new Voucher();
         voucher.setCodigo(codigo);
         voucher.setPromocao(promocao);
         voucher.setUsuario(usuario);
-        //super.create(voucher);
+        super.create(voucher);
         
         return voucher;
     }
