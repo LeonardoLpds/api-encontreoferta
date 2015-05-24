@@ -4,7 +4,7 @@ import encontreoferta.api.model.Voucher;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import com.google.gson.Gson;
-import encontreoferta.api.lib.HibernateUtil;
+import encontreoferta.api.lib.UsuarioUtil;
 import encontreoferta.api.model.Promocao;
 import encontreoferta.api.model.Usuario;
 import encontreoferta.api.model.Visitante;
@@ -18,7 +18,7 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
     public Voucher gerar(String json) {
         Visitante visitante = new Gson().fromJson(json, Visitante.class);
         
-        Usuario usuario = convertToUser(visitante);
+        Usuario usuario = UsuarioUtil.convertVisitorInUser(visitante);
         
         Promocao promocao = getPromocaoById(visitante.getIdPromocao());
         String codigo = String.valueOf(new Date().getTime());
@@ -31,35 +31,6 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         
         return voucher;
     }
-    
-    private Usuario convertToUser(Visitante visitante){
-        if(visitante.getIdUsuario() != null){
-            return getUserById(visitante.getIdUsuario());
-        }
-        return createNewUser(visitante.getEmail());
-    }
-    
-    private Usuario createNewUser(String email){
-        Usuario usuario = new Usuario();
-        usuario.setEmail(email);
-        HibernateUtil.persistObject(usuario);
-        return getUserByEmail(email);
-    }
-    
-    private Usuario getUserByEmail(String email){
-        return (Usuario) getEntityManager()
-                .createNamedQuery("Usuario.findByEmail")
-                .setParameter("email", email)
-                .getSingleResult();
-    }
-    
-    private Usuario getUserById(Integer id){
-        return (Usuario) getEntityManager()
-                .createNamedQuery("Usuario.findById")
-                .setParameter("id", id)
-                .getSingleResult();
-    }
-    
     private Promocao getPromocaoById(Integer id){
         return (Promocao) getEntityManager()
                 .createNamedQuery("Promocao.findById")
