@@ -4,8 +4,8 @@ import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 public abstract class HibernateUtil{
-    protected final SessionFactory sessionFactory = buildSessionFactory();
-    protected final Session session = sessionFactory.openSession();
+    protected final static SessionFactory sessionFactory = buildSessionFactory();
+    protected final static Session session = sessionFactory.openSession();
     
     protected static SessionFactory buildSessionFactory()
     {
@@ -21,14 +21,14 @@ public abstract class HibernateUtil{
         }
     }
     
-    protected void persistObject(Object object){
+    protected static void persistObject(Object object){
         session.beginTransaction();
         session.save(object);
         session.getTransaction().commit();
         shutdown();
     }
   
-    protected void shutdown() {
+    protected static void shutdown() {
         sessionFactory.close();
     }
 }
