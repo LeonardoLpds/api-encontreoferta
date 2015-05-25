@@ -40,10 +40,13 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
     }
     
     private Usuario createNewUser(String email){
-        Usuario usuario = new Usuario();
-        usuario.setEmail(email);
-        HibernateUtil.persistObject(usuario);
-        return getUserByEmail(email);
+        try{
+            Usuario usuario = new Usuario();
+            usuario.setEmail(email);
+            HibernateUtil.persistObject(usuario);
+        }finally{
+            return getUserByEmail(email);
+        }
     }
     
     private Usuario getUserByEmail(String email){
