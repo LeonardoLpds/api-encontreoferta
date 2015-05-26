@@ -8,6 +8,7 @@ import encontreoferta.api.lib.HibernateUtil;
 import encontreoferta.api.model.Promocao;
 import encontreoferta.api.model.Usuario;
 import encontreoferta.api.model.Visitante;
+import java.util.List;
 
 public abstract class VoucherFacade extends AbstractFacade<Voucher>{
 
@@ -50,24 +51,42 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
     }
     
     private Usuario getUserByEmail(String email){
-        return (Usuario) getEntityManager()
+        Usuario usuario = null;
+        try{
+            usuario =  (Usuario) getEntityManager()
                 .createNamedQuery("Usuario.findByEmail")
                 .setParameter("email", email)
                 .getSingleResult();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return usuario;
     }
     
     private Usuario getUserById(Integer id){
-        return (Usuario) getEntityManager()
+        Usuario usuario = null;
+        try{
+        usuario = (Usuario) getEntityManager()
                 .createNamedQuery("Usuario.findById")
                 .setParameter("id", id)
                 .getSingleResult();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return usuario;
     }
     
     private Promocao getPromocaoById(Integer id){
-        return (Promocao) getEntityManager()
-                .createNamedQuery("Promocao.findById")
-                .setParameter("id", id)
-                .getSingleResult();
+        Promocao promocao = null;
+        try{
+            promocao = (Promocao) getEntityManager()
+                    .createNamedQuery("Promocao.findById")
+                    .setParameter("id", id)
+                    .getSingleResult();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return promocao;
     }
     
     @Override
