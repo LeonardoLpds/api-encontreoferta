@@ -35,15 +35,16 @@ public abstract class UsuarioFacade extends AbstractFacade<Usuario>{
         return usuario;
     }
     
-    private Usuario findBySenha(String senha){
-        Usuario usuario = null;
+    public Usuario login(Usuario usuario){
         try{
             usuario = (Usuario) getEntityManager()
-                    .createNamedQuery("Usuario.findBySenha")
-                    .setParameter("senha", senha)
+                    .createNamedQuery("Usuario.login")
+                    .setParameter("senha", usuario.getSenha())
+                    .setParameter("email", usuario.getEmail())
                     .getSingleResult();
         }catch(Exception e){
             e.printStackTrace();
+            return null;
         }
         return usuario;
     }
