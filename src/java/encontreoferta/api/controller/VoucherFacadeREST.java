@@ -64,6 +64,7 @@ public class VoucherFacadeREST extends VoucherFacade{
     @GET
     @Path("usuario/{id}")
     @Produces("application/json")
+    @Override
     public List<Voucher> getByUser(@PathParam("id") Integer id) {
         return super.getByUser(id);
     }
