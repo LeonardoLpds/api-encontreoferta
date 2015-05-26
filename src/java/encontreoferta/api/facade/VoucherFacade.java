@@ -33,6 +33,24 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         return voucher;
     }
     
+    public List<Voucher> getByUser(Integer idUsuario){
+        List<Voucher> vouchers = null;
+        try{
+            Usuario usuario = (Usuario) getEntityManager()
+                    .createNamedQuery("Usuario.findById")
+                    .setParameter("id", idUsuario)
+                    .getSingleResult();
+            
+            vouchers = getEntityManager()
+                    .createNamedQuery("Voucher.findByUser")
+                    .setParameter("usuario", usuario)
+                    .getResultList();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return vouchers;
+    }
+    
     private Usuario convertToUser(Visitante visitante){
         if(visitante.getIdUsuario() != null){
             return getUserById(visitante.getIdUsuario());
