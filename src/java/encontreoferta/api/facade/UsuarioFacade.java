@@ -11,7 +11,7 @@ public abstract class UsuarioFacade extends AbstractFacade<Usuario>{
     
     public String register(Usuario usuario) {
         if(findByEmail(usuario.getEmail()) != null){
-            if(findBySenha(usuario.getSenha()) != null){
+            if(findByEmail(usuario.getEmail()).getSenha() != null){
                 return "{\"result\":\"erro\",\"cause\":\"Usuário já cadastrado\",\"message\":\"O email digitado já existe em nossa base de dados, tente fazer login!\"}";
             }
             edit(usuario);
@@ -39,7 +39,7 @@ public abstract class UsuarioFacade extends AbstractFacade<Usuario>{
         try{
             usuario = (Usuario) getEntityManager()
                     .createNamedQuery("Usuario.findBySenha")
-                    .setParameter("email", senha)
+                    .setParameter("senha", senha)
                     .getSingleResult();
         }catch(Exception e){
             e.printStackTrace();
