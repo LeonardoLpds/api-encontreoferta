@@ -22,7 +22,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Voucher.findAll", query = "SELECT v FROM Voucher v"),
     @NamedQuery(name = "Voucher.findById", query = "SELECT v FROM Voucher v WHERE v.id = :id"),
-    @NamedQuery(name = "Voucher.findByCodigo", query = "SELECT v FROM Voucher v WHERE v.codigo = :codigo")})
+    @NamedQuery(name = "Voucher.findByCodigo", query = "SELECT v FROM Voucher v WHERE v.codigo = :codigo"),
+    @NamedQuery(name = "Voucher.findByUser", query = "SELECT v FROM Voucher v WHERE v.usuario = :usuario")
+})
 public class Voucher implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
