@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package encontreoferta.api.controller;
 
 import encontreoferta.api.model.Usuario;
@@ -19,14 +13,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import encontreoferta.api.facade.AbstractFacade;
-/**
- *
- * @author leonardo
- */
+import encontreoferta.api.facade.UsuarioFacade;
+
 @Stateless
 @Path("usuario")
-public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
+public class UsuarioFacadeREST extends UsuarioFacade{
     @PersistenceContext(unitName = "api.encontreofertaPU")
     private EntityManager em;
 
@@ -37,8 +28,9 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     @POST
     @Override
     @Consumes("application/json")
-    public void create(Usuario entity) {
-        super.create(entity);
+    @Produces("application/json")
+    public String register(Usuario entity) {
+        return super.register(entity);
     }
 
     @PUT
