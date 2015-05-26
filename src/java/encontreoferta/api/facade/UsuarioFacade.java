@@ -14,6 +14,7 @@ public abstract class UsuarioFacade extends AbstractFacade<Usuario>{
             if(findByEmail(usuario.getEmail()).getSenha() != null){
                 return "{\"result\":\"erro\",\"cause\":\"Usuário já cadastrado\",\"message\":\"O email digitado já existe em nossa base de dados, tente fazer login!\"}";
             }
+            usuario.setId(findByEmail(usuario.getEmail()).getId());
             edit(usuario);
             return "{\"result\":\"pre\",\"cause\":\"Pré cadastro encontrado\",\"message\":\"Obrigado por finalizar seu cadastro! Todos os seus vouchers podem ser encontrados em 'meus vouchers' em sua área de usuário\"}";
         }
