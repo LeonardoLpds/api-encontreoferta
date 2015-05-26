@@ -32,6 +32,15 @@ public class UsuarioFacadeREST extends UsuarioFacade{
     public String register(Usuario entity) {
         return super.register(entity);
     }
+    
+    @POST
+    @Override
+    @Path("login")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Usuario login(Usuario entity) {
+        return super.login(entity);
+    }
 
     @PUT
     @Path("{id}")
