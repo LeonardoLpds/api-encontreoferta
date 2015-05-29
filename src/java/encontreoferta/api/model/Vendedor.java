@@ -54,8 +54,9 @@ public class Vendedor implements Serializable {
     private String descricao;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "telefone")
-    private int telefone;
+    private String telefone;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
@@ -77,7 +78,7 @@ public class Vendedor implements Serializable {
         this.id = id;
     }
 
-    public Vendedor(Integer id, String cnpj, String nome, String descricao, int telefone, String endereco, String email) {
+    public Vendedor(Integer id, String cnpj, String nome, String descricao, String telefone, String endereco, String email) {
         this.id = id;
         this.cnpj = cnpj;
         this.nome = nome;
@@ -119,11 +120,11 @@ public class Vendedor implements Serializable {
         this.descricao = descricao;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
