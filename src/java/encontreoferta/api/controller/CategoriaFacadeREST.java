@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package encontreoferta.api.controller;
 
 import encontreoferta.api.model.Categoria;
@@ -21,10 +15,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import encontreoferta.api.facade.AbstractFacade;
 
-/**
- *
- * @author leonardo
- */
 @Stateless
 @Path("categoria")
 public class CategoriaFacadeREST extends AbstractFacade<Categoria> {
@@ -45,13 +35,13 @@ public class CategoriaFacadeREST extends AbstractFacade<Categoria> {
     @PUT
     @Path("{id}")
     @Consumes("application/json")
-    public void edit(@PathParam("id") String id, Categoria entity) {
+    public void edit(@PathParam("id") Integer id, Categoria entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 

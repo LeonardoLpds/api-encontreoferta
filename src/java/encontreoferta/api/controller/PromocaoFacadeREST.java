@@ -35,13 +35,13 @@ public class PromocaoFacadeREST extends PromocaoFacade{
     @PUT
     @Path("{id}")
     @Consumes("application/json")
-    public void edit(@PathParam("id") String id, Promocao entity) {
+    public void edit(@PathParam("id") Integer id, Promocao entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 

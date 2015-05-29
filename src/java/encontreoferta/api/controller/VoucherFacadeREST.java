@@ -44,13 +44,13 @@ public class VoucherFacadeREST extends VoucherFacade{
     @PUT
     @Path("{id}")
     @Consumes("application/json")
-    public void edit(@PathParam("id") String id, Voucher entity) {
+    public void edit(@PathParam("id") Integer id, Voucher entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 
