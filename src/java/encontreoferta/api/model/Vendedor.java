@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package encontreoferta.api.model;
 
 import java.io.Serializable;
@@ -24,10 +18,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author leonardo
- */
 @Entity
 @Table(name = "vendedor")
 @XmlRootElement
@@ -49,8 +39,9 @@ public class Vendedor implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "cnpj")
-    private int cnpj;
+    private String cnpj;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -86,7 +77,7 @@ public class Vendedor implements Serializable {
         this.id = id;
     }
 
-    public Vendedor(Integer id, int cnpj, String nome, String descricao, int telefone, String endereco, String email) {
+    public Vendedor(Integer id, String cnpj, String nome, String descricao, int telefone, String endereco, String email) {
         this.id = id;
         this.cnpj = cnpj;
         this.nome = nome;
@@ -104,11 +95,11 @@ public class Vendedor implements Serializable {
         this.id = id;
     }
 
-    public int getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(int cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 
