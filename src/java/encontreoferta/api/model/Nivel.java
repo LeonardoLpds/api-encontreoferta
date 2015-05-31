@@ -43,7 +43,7 @@ public class Nivel implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nivel")
     private Collection<Promocao> promocaoCollection;
 
     public Nivel() {

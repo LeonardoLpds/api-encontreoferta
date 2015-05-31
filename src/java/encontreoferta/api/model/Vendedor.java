@@ -68,7 +68,7 @@ public class Vendedor implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "email")
     private String email;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVendedor")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vendedor")
     private Collection<Promocao> promocaoCollection;
 
     public Vendedor() {

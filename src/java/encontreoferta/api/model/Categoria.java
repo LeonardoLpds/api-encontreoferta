@@ -53,7 +53,7 @@ public class Categoria implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
     private Collection<Promocao> promocaoCollection;
 
     public Categoria() {
