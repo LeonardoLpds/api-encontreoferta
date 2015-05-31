@@ -21,7 +21,7 @@ public abstract class PromocaoFacade extends AbstractFacade<Promocao>{
                 .getSingleResult();
         
             promocoes = getEntityManager().createNamedQuery("Promocao.findByCategoria")
-                .setParameter("idCategoria", categoria)
+                .setParameter("categoria", categoria)
                 .getResultList();
         }catch(Exception e){
             e.printStackTrace();
@@ -39,7 +39,7 @@ public abstract class PromocaoFacade extends AbstractFacade<Promocao>{
                 .getSingleResult();
         
             promocoes = getEntityManager().createNamedQuery("Promocao.findByNivel")
-                .setParameter("idCategoria", nivel)
+                .setParameter("nivel", nivel)
                 .getResultList();
         }catch(Exception e){
             e.printStackTrace();
