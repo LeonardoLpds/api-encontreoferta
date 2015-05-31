@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Promocao.findByImagem", query = "SELECT p FROM Promocao p WHERE p.imagem = :imagem"),
     @NamedQuery(name = "Promocao.findByQuantidade", query = "SELECT p FROM Promocao p WHERE p.quantidade = :quantidade"),
     @NamedQuery(name = "Promocao.findByOferta", query = "SELECT p FROM Promocao p WHERE p.oferta = :oferta"),
-    @NamedQuery(name = "Promocao.findByCategoria", query = "SELECT p FROM Promocao p WHERE p.idCategoria = :idCategoria"),
-    @NamedQuery(name = "Promocao.findByNivel", query = "SELECT p FROM Promocao p WHERE p.idNivel = :idNivel"),
-    @NamedQuery(name = "Promocao.findByVendedor", query = "SELECT p FROM Promocao p WHERE p.idVendedor = :idVendedor")
+    @NamedQuery(name = "Promocao.findByCategoria", query = "SELECT p FROM Promocao p WHERE p.categoria = :categoria"),
+    @NamedQuery(name = "Promocao.findByNivel", query = "SELECT p FROM Promocao p WHERE p.nivel = :nivel"),
+    @NamedQuery(name = "Promocao.findByVendedor", query = "SELECT p FROM Promocao p WHERE p.vendedor = :vendedor")
 })
 public class Promocao implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -73,13 +73,13 @@ public class Promocao implements Serializable {
     private String oferta;
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Categoria idCategoria;
+    private Categoria categoria;
     @JoinColumn(name = "id_nivel", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Nivel idNivel;
+    private Nivel nivel;
     @JoinColumn(name = "id_vendedor", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Vendedor idVendedor;
+    private Vendedor vendedor;
 
     public Promocao() {
     }
@@ -154,28 +154,28 @@ public class Promocao implements Serializable {
         this.oferta = oferta;
     }
 
-    public Categoria getIdCategoria() {
-        return idCategoria;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setIdCategoria(Categoria idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-    public Nivel getIdNivel() {
-        return idNivel;
+    public Nivel getNivel() {
+        return nivel;
     }
 
-    public void setIdNivel(Nivel idNivel) {
-        this.idNivel = idNivel;
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
     }
 
-    public Vendedor getIdVendedor() {
-        return idVendedor;
+    public Vendedor getVendedor() {
+        return vendedor;
     }
 
-    public void setIdVendedor(Vendedor idVendedor) {
-        this.idVendedor = idVendedor;
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
     }
 
     @Override
