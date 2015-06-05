@@ -65,7 +65,7 @@ public class PromocaoFacadeREST extends PromocaoFacade{
     @Path("nivel/{id}")
     @Produces("application/json")
     public List<Promocao> findByNivel(@PathParam("id") Integer id) {
-        return super.findByCategoria(id);
+        return super.findByNivel(id);
     }
     
     @GET
