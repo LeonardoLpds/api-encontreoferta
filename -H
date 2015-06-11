@@ -1,0 +1,8 @@
+HTTP/1.1 415 Unsupported Media Type
+X-Powered-By: Servlet/3.1 JSP/2.3 (GlassFish Server Open Source Edition  4.0  Java/Oracle Corporation/1.7)
+Server: GlassFish Server Open Source Edition  4.0 
+Content-Language: pt-BR
+Content-Type: text/html;charset=ISO-8859-1
+Date: Thu, 11 Jun 2015 17:16:45 GMT
+Content-Length: 1241
+

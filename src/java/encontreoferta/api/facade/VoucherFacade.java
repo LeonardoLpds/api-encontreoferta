@@ -9,6 +9,7 @@ import encontreoferta.api.model.Promocao;
 import encontreoferta.api.model.Usuario;
 import encontreoferta.api.model.Visitante;
 import java.util.List;
+import javax.ws.rs.core.Response;
 
 public abstract class VoucherFacade extends AbstractFacade<Voucher>{
 
@@ -16,7 +17,7 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         super(entityClass);
     }
     
-    public Voucher gerar(String json) {
+    public Response gerar(String json) {
         Visitante visitante = new Gson().fromJson(json, Visitante.class);
         
         Usuario usuario = convertToUser(visitante);
@@ -30,7 +31,12 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         voucher.setUsuario(usuario);
         super.create(voucher);
         
-        return voucher;
+        return Response.ok().header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "POST")
+                .header("Access-Control-Allow-Headers", "Content-Type")
+                .entity(voucher)
+                .build();
+        //return voucher;
     }
     
     public List<Voucher> getByUser(Integer idUsuario){
