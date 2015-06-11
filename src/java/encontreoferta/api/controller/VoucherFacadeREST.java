@@ -38,7 +38,7 @@ public class VoucherFacadeREST extends VoucherFacade{
     @Path("gerar")
     @Consumes("application/json")
     @Produces("application/json")
-    public Response gerar(String json) {
+    public Voucher gerar(String json) {
         return super.gerar(json);
     }
     
