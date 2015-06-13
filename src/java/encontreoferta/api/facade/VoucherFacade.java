@@ -4,14 +4,14 @@ import encontreoferta.api.model.Voucher;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import com.google.gson.Gson;
-import encontreoferta.api.lib.HibernateUtil;
 import encontreoferta.api.model.Promocao;
 import encontreoferta.api.model.Usuario;
 import encontreoferta.api.model.Visitante;
 import java.util.List;
+import javax.inject.Inject;
 
 public abstract class VoucherFacade extends AbstractFacade<Voucher>{
-
+    @Inject AbstractFacade<Usuario> abstractFacade;
     public VoucherFacade(Class<Voucher> entityClass) {
         super(entityClass);
     }
@@ -61,7 +61,7 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         try{
             Usuario usuario = new Usuario();
             usuario.setEmail(email);
-            HibernateUtil.persistObject(usuario);
+            abstractFacade.create(usuario);
         }finally{
             return getUserByEmail(email);
         }
