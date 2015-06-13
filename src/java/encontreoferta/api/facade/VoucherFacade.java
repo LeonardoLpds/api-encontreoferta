@@ -54,6 +54,9 @@ public abstract class VoucherFacade extends AbstractFacade<Voucher>{
         if(visitante.getIdUsuario() != null){
             return getUserById(visitante.getIdUsuario());
         }
+        if(getUserByEmail(visitante.getEmail()) != null){
+            return getUserByEmail(visitante.getEmail());
+        }
         return createNewUser(visitante.getEmail());
     }
     
