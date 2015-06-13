@@ -21,7 +21,6 @@ public class ApplicationConfig extends Application {
         resources.add(encontreoferta.api.controller.VendedorFacadeREST.class);
         resources.add(encontreoferta.api.controller.VoucherFacadeREST.class);
         resources.add(encontreoferta.api.lib.RESTServiceResponseFilter.class);
-        resources.add(encontreoferta.api.lib.HibernateUtil.class);
     }
     
 }
