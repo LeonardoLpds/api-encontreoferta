@@ -1,11 +1,10 @@
 package encontreoferta.api.facade;
 
 import encontreoferta.api.model.Admin;
-import encontreoferta.api.model.Usuario;
 
-public abstract class AdminFacade extends AbstractFacade<Usuario>{
+public abstract class AdminFacade extends AbstractFacade<Admin>{
 
-    public AdminFacade(Class<Usuario> entityClass) {
+    public AdminFacade(Class<Admin> entityClass) {
         super(entityClass);
     }
     
