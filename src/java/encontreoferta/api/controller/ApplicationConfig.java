@@ -14,6 +14,7 @@ public class ApplicationConfig extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(encontreoferta.api.controller.AdminFacadeREST.class);
         resources.add(encontreoferta.api.controller.CategoriaFacadeREST.class);
         resources.add(encontreoferta.api.controller.NivelFacadeREST.class);
         resources.add(encontreoferta.api.controller.PromocaoFacadeREST.class);
