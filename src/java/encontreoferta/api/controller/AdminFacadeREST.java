@@ -1,10 +1,8 @@
 
 package encontreoferta.api.controller;
 
-import encontreoferta.api.facade.AbstractFacade;
 import encontreoferta.api.facade.AdminFacade;
 import encontreoferta.api.model.Admin;
-import encontreoferta.api.model.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
